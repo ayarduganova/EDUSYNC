@@ -10,4 +10,5 @@ class MainActivity : AppCompatActivity() {
     }
     //Ритаааааааааааааааа
     //НАСТЯЯЯЯЯЯЯЯ
+    //ыыыыыыыыыыыыыыыы
 }
