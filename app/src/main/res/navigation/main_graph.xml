@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/diaryFragment">
+
+    <fragment
+        android:id="@+id/diaryFragment"
+        android:name="com.project.edusync.DiaryFragment"
+        android:label="DiaryFragment" >
+        <action
+            android:id="@+id/action_diaryFragment_to_editDiaryFragment"
+            app:destination="@id/editDiaryFragment" />
+        <action
+            android:id="@+id/action_diaryFragment_to_homeworksFragment"
+            app:destination="@id/homeworksFragment" />
+        <action
+            android:id="@+id/action_diaryFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editDiaryFragment"
+        android:name="com.project.edusync.EditDiaryFragment"
+        android:label="fragment_edit_diary"
+        tools:layout="@layout/fragment_edit_diary" >
+        <action
+            android:id="@+id/action_editDiaryFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeworksFragment"
+        android:name="com.project.edusync.HomeworksFragment"
+        android:label="fragment_homeworks"
+        tools:layout="@layout/fragment_homeworks" >
+        <action
+            android:id="@+id/action_homeworksFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+        <action
+            android:id="@+id/action_homeworksFragment_to_newHomeworkFragment"
+            app:destination="@id/newHomeworkFragment" />
+        <action
+            android:id="@+id/action_homeworksFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newHomeworkFragment"
+        android:name="com.project.edusync.NewHomeworkFragment"
+        android:label="fragment_new_homework"
+        tools:layout="@layout/fragment_new_homework" >
+        <action
+            android:id="@+id/action_newHomeworkFragment_to_homeworksFragment"
+            app:destination="@id/homeworksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.project.edusync.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notesFragment_to_homeworksFragment"
+            app:destination="@id/homeworksFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_newNoteFragment"
+            app:destination="@id/newNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newNoteFragment"
+        android:name="com.project.edusync.NewNoteFragment"
+        android:label="fragment_new_note"
+        tools:layout="@layout/fragment_new_note" >
+        <action
+            android:id="@+id/action_newNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+</navigation>
