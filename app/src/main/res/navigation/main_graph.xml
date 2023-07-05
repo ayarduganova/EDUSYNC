@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_notesFragment_to_newNoteFragment"
             app:destination="@id/newNoteFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeworksFragment"
@@ -117,6 +120,15 @@
         tools:layout="@layout/fragment_new_note" >
         <action
             android:id="@+id/action_newNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.project.edusync.EditNoteFragment"
+        android:label="fragment_edit_note"
+        tools:layout="@layout/fragment_edit_note" >
+        <action
+            android:id="@+id/action_editNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
     </fragment>
 </navigation>

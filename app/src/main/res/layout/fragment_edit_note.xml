@@ -4,45 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotesFragment">
+    tools:context=".EditNoteFragment">
 
-    <TextView
+    <EditText
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Notes"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16sp"
+        tools:text="Note"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tl"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    <EditText
+        android:id="@+id/et_note"
+        android:layout_width="334dp"
+        android:layout_height="640dp"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="Enter text..."
+        android:inputType="textMultiLine"
+        android:lines="@integer/material_motion_duration_long_1"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/tv_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:layout_constraintVertical_bias="1.0"
-        tools:itemCount="6"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:listitem="@layout/item_note" />
-
+        app:layout_constraintVertical_bias="0.0" />
     <ImageButton
-        android:id="@+id/plusImageButton"
+        android:id="@+id/backImageButton"
         android:layout_width="71dp"
         android:layout_height="59dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="28dp"
-        android:src="@drawable/baseline_add_24"
+        android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
