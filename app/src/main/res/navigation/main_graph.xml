@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/navigation2">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/diaryFragment"
@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_diaryFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_diaryFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/editDiaryFragment"
@@ -42,6 +45,9 @@
         <action
             android:id="@+id/action_homeworksFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_homeworksFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/newHomeworkFragment"
@@ -66,6 +72,9 @@
         <action
             android:id="@+id/action_notesFragment_to_newNoteFragment"
             app:destination="@id/newNoteFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/newNoteFragment"
@@ -80,25 +89,33 @@
         android:id="@+id/settingsFragment2"
         android:name="com.project.edusync.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <navigation android:id="@+id/navigation2"
-        app:startDestination="@id/mainFragment">
-        <fragment
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment2_to_notesFragment"
+            app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_homeworksFragment"
+            app:destination="@id/homeworksFragment" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+    </fragment>
+    <fragment
             android:id="@+id/mainFragment"
             android:name="com.project.edusync.MainFragment"
             android:label="fragment_main"
-            tools:layout="@layout/fragment_main" />
+            tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_global_notesFragment2"
+            android:id="@+id/action_mainFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
         <action
-            android:id="@+id/action_global_diaryFragment2"
+            android:id="@+id/action_mainFragment_to_diaryFragment"
             app:destination="@id/diaryFragment" />
         <action
-            android:id="@+id/action_global_settingsFragment22"
-            app:destination="@id/settingsFragment2" />
-        <action
-            android:id="@+id/action_global_homeworksFragment2"
+            android:id="@+id/action_mainFragment_to_homeworksFragment"
             app:destination="@id/homeworksFragment" />
-    </navigation>
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
+    </fragment>
 </navigation>

@@ -18,16 +18,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         binding?.run {
             button.setOnClickListener {
-                findNavController().navigate(R.id.action_global_notesFragment2)
+                findNavController().navigate(R.id.action_mainFragment_to_notesFragment)
             }
             button2.setOnClickListener {
-                findNavController().navigate(R.id.action_global_diaryFragment2)
+                findNavController().navigate(R.id.action_mainFragment_to_diaryFragment)
             }
             button3.setOnClickListener {
-                findNavController().navigate(R.id.action_global_homeworksFragment2)
+                findNavController().navigate(R.id.action_diaryFragment_to_homeworksFragment)
             }
             button4.setOnClickListener {
-                findNavController().navigate(R.id.action_global_settingsFragment22)
+                findNavController().navigate(R.id.action_mainFragment_to_settingsFragment2)
             }
         }
     }
