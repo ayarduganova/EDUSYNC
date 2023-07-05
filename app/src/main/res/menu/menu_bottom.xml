@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/notesFragment"
+        android:icon="@drawable/baseline_ballot_24"
+        android:title="Notes" />
+
+    <item
+        android:id="@+id/diaryFragment"
+        android:icon="@drawable/baseline_book_24"
+        android:title="Diary" />
+
+    <item
+        android:id="@+id/hwFragment"
+        android:icon="@drawable/baseline_auto_stories_24"
+        android:title="Homeworks" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="Settings" />
+</menu>
