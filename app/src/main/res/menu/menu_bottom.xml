@@ -12,7 +12,7 @@
         android:title="Diary" />
 
     <item
-        android:id="@+id/hwFragment"
+        android:id="@+id/homeworksFragment"
         android:icon="@drawable/baseline_auto_stories_24"
         android:title="Homeworks" />
     <item

@@ -24,10 +24,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 findNavController().navigate(R.id.action_mainFragment_to_diaryFragment)
             }
             button3.setOnClickListener {
-                findNavController().navigate(R.id.action_diaryFragment_to_homeworksFragment)
+                findNavController().navigate(R.id.action_mainFragment_to_homeworksFragment)
             }
             button4.setOnClickListener {
-                findNavController().navigate(R.id.action_mainFragment_to_settingsFragment2)
+                findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
             }
         }
     }
