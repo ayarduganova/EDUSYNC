@@ -88,6 +88,7 @@
         android:layout_height="59dp"
         android:contentDescription="@string/new_note"
         android:layout_alignParentTop="true"
+        android:contentDescription="@string/new_note"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="28dp"
         android:backgroundTint="@color/accent"
