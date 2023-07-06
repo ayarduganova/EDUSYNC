@@ -11,4 +11,11 @@
     <string name="diary">Diary</string>
     <string name="homeworks">Homeworks</string>
     <string name="edusync">EDUSYNC</string>
+    <string name="your_homeworks">Your Homeworks</string>
+    <string name="your_diary">Your Diary</string>
+    <string name="your_notes">Your Notes</string>
+    <string name="new_note">New Note</string>
+    <string name="new_homework">New Homework</string>
+    <string name="edit_diary">Edit Diary</string>
+    <string name="name_homework">Name Homework</string>
 </resources>
