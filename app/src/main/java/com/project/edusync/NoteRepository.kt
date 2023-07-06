@@ -1,9 +1,11 @@
 package com.project.edusync
 
+import android.app.PendingIntent.getActivity
+import android.content.Context
 import android.text.Editable
 
 object NoteRepository {
-    val list: List<Note> = listOf(
+    val list: MutableList<Note> = mutableListOf(
         Note(name = "Note #1", description = "Enter text...", 1),
         Note(name = "Note #2", description = "Enter text...", 2),
         Note(name = "Note #3", description = "Enter text...", 3),

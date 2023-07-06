@@ -4,7 +4,7 @@ import android.text.Editable
 import android.widget.EditText
 
 data class Note(
-    val name: String,
-    val description: String,
+    var name: String,
+    var description: String,
     val id: Int,
 )
