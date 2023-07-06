@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">EDUSYNC</string>
+    <string name="hello_blank_fragment">Привет</string>
+    <string name="clear_diary">Очистить Расписание</string>
+    <string name="clear_notes">Очистить Заметки</string>
+    <string name="clear_homeworks">Очистить ДЗ</string>
+    <string name="clear_all">Очистить все</string>
+    <string name="settings">Настройки</string>
+    <string name="notes">Заметки</string>
+    <string name="diary">Расписание</string>
+    <string name="homeworks">ДЗ</string>
+    <string name="edusync">EDUSYNC</string>
+    <string name="your_homeworks">Твои ДЗ</string>
+    <string name="your_diary">Твое Расписание</string>
+    <string name="your_notes">Твои заметки</string>
+    <string name="new_note">Новая заметка</string>
+    <string name="new_homework">Новое ДЗ</string>
+    <string name="edit_diary">Изменить расписание</string>
+    <string name="name_homework">Название ДЗ</string>
+    <string name="save">Сохранить</string>
+</resources>
