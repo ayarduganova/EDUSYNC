@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/notesFragment"
-        android:icon="@drawable/baseline_ballot_24"
-        android:title="Notes" />
+        android:icon="@drawable/free_icon_pinned_notes_5227447"
+        android:title="@string/notes" />
 
     <item
         android:id="@+id/diaryFragment"
-        android:icon="@drawable/baseline_book_24"
-        android:title="Diary" />
+        android:icon="@drawable/free_icon_hourglass_3094750"
+        android:title="@string/diary" />
 
     <item
         android:id="@+id/homeworksFragment"
-        android:icon="@drawable/baseline_auto_stories_24"
-        android:title="Homeworks" />
+        android:icon="@drawable/free_icon_homework_6515814"
+        android:title="@string/homeworks" />
     <item
         android:id="@+id/settingsFragment"
-        android:icon="@drawable/baseline_settings_24"
-        android:title="Settings" />
+        android:icon="@drawable/free_icon_settings_780501"
+        android:title="@string/settings" />
 </menu>
