@@ -23,12 +23,9 @@ class EditDiaryFragment : Fragment(R.layout.fragment_edit_diary) {
         auditory = binding?.itAuditory
         start = binding?.itStartTime
         end = binding?.itEndTime
-
-        /*binding?.buttonToDiaryFragment?.setOnClickListener{
-            findNavController().navigate(R.id.action_editDiaryFragment_to_diaryFragment)
-
-        }*/
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
