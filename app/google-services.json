@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "914947910426",
+    "firebase_url": "https://databaseedusync-default-rtdb.firebaseio.com",
+    "project_id": "databaseedusync",
+    "storage_bucket": "databaseedusync.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914947910426:android:dfa7020d5ffa676404daa3",
+        "android_client_info": {
+          "package_name": "com.project.edusync"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "914947910426-msjtk314i8dl3h8cv9ceqap1rf4evd8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD04JpHYUIp-DC67tTxlu1sXH2S0RBptZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "914947910426-msjtk314i8dl3h8cv9ceqap1rf4evd8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
