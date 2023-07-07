@@ -38,8 +38,8 @@
             android:id="@+id/action_diaryFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_diaryFragment_to_editDiaryFragment"
-            app:destination="@id/editDiaryFragment" />
+            android:id="@+id/action_diaryFragment_to_scheduleForDayFragment"
+            app:destination="@id/scheduleForDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/notesFragment"
@@ -101,8 +101,8 @@
         android:label="fragment_edit_diary"
         tools:layout="@layout/fragment_edit_diary" >
         <action
-            android:id="@+id/action_editDiaryFragment_to_diaryFragment"
-            app:destination="@id/diaryFragment" />
+            android:id="@+id/action_editDiaryFragment_to_scheduleForDayFragment"
+            app:destination="@id/scheduleForDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/newHomeworkFragment"
@@ -130,5 +130,17 @@
         <action
             android:id="@+id/action_editNoteFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleForDayFragment"
+        android:name="com.project.edusync.ScheduleForDayFragment"
+        android:label="ScheduleForDayFragment"
+        tools:layout="@layout/fragment_schedule_for_day">
+        <action
+            android:id="@+id/action_scheduleForDayFragment_to_editDiaryFragment"
+            app:destination="@id/editDiaryFragment" />
+        <action
+            android:id="@+id/action_scheduleForDayFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
     </fragment>
 </navigation>
