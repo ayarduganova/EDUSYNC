@@ -4,7 +4,9 @@ import android.text.Editable
 import android.widget.EditText
 
 data class Note(
+    val id: String,
     var name: String,
     var description: String,
-    val id: Int,
-)
+){
+    constructor() : this("", "", "")
+}

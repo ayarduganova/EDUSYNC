@@ -1,17 +1,26 @@
 package com.project.edusync
-import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.project.edusync.databinding.FragmentNotesBinding
 
 
 class NotesFragment : Fragment(R.layout.fragment_notes) {
     private var binding: FragmentNotesBinding? = null
     private var adapter: NoteAdapter? = null
+    private var listView: RecyclerView? = null
+    private var listData: MutableList<Note>? = null
+
+    private var myDB: DatabaseReference? = null
+    private val NOTE_KEY = "Note"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNotesBinding.bind(view)
@@ -23,31 +32,34 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         binding = null
     }
     private fun initAdapter(){
-        adapter = NoteAdapter(list = NoteRepository.list,
-            glide = Glide.with(this),
-            onItemClick = { note ->
-                findNavController().navigate(R.id.action_notesFragment_to_editNoteFragment,
-                    EditNoteFragment.createBundle(note.id))
-            },
-            savedName = {
-                note ->
-                var str = getActivity()?.getSharedPreferences("pref", MODE_PRIVATE)?.getString("newTitle"+ note?.id.toString(), note.name)
-                note.name = str.toString()
-            },
-            savedDescription = {
-                note ->
-                var str1 = getActivity()?.getSharedPreferences("pref", MODE_PRIVATE)?.getString("newDescription"+ note?.id.toString(), note.description)
-                note.description = str1.toString()
-            })
+        listData = mutableListOf(Note("0", "gfhj", "fghj"))
+        adapter = NoteAdapter(list = listData!!
+            //onItemClick = { note ->
+                //findNavController().navigate(R.id.action_notesFragment_to_editNoteFragment,
+                    //EditNoteFragment.createBundle(note.id))}
+                )
         binding?.rvTl?.adapter = adapter
+        myDB = FirebaseDatabase.getInstance().getReference(NOTE_KEY)
+        if(listData!!.size > 0) listData!!.clear()
+        var vListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.getChildren()) {
+                    val note: Note = ds.getValue(Note::class.java)!!
+                    assert(note != null)
+                    listData!!.add(note)
+                }
+                adapter!!.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        }
+        myDB!!.addValueEventListener(vListener)
         binding?.run {
             plusImageButton.setOnClickListener {
-                NoteRepository.list.add(Note(name = "Note #" + (NoteRepository.list.size + 1).toString(), description = "Enter text...", id = NoteRepository.list.size + 1))
-                adapter!!.notifyItemInserted(NoteRepository.list.size - 1)
-            }
-            minusImageButton.setOnClickListener {
-                NoteRepository.list.removeIf { note -> note.id == NoteRepository.list.size }
-                adapter!!.notifyItemRemoved(NoteRepository.list.size + 1)
+                findNavController().navigate(R.id.action_notesFragment_to_newNoteFragment)
             }
         }
         binding?.rvTl?.layoutManager = GridLayoutManager(requireContext(), 2)

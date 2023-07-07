@@ -14,20 +14,15 @@ import kotlin.coroutines.coroutineContext
 
 class NoteItem(
     private val binding: ItemNoteBinding,
-    private val glide: RequestManager,
-    private val onItemClick: (Note) -> Unit,
-    private val savedName: (Note) -> Unit,
-    private val savedDescription: (Note) -> Unit,
+    //private val onItemClick: (Note) -> Unit,
 ) : ViewHolder(binding.root) {
 
     fun onBind(note: Note) {
-        savedName(note)
-        savedDescription(note)
         binding.run {
             tvTitle.text = note.name
             etNote.text = note.description
             root.setOnClickListener {
-                onItemClick(note)
+                //onItemClick(note)
             }
         }
     }
