@@ -5,55 +5,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.project.edusync.databinding.FragmentEditDiaryBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class EditDiaryFragment : Fragment(R.layout.fragment_edit_diary) {
+    private var name: TextInputEditText? = null
+    private var auditory: TextInputEditText? = null
+    private var start: TextInputEditText? = null
+    private var end: TextInputEditText? = null
+    private var binding: FragmentEditDiaryBinding? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentEditDiaryBinding.bind(view)
+        name = binding?.itItemName
+        auditory = binding?.itAuditory
+        start = binding?.itStartTime
+        end = binding?.itEndTime
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EditDiaryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class EditDiaryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+        /*binding?.buttonToDiaryFragment?.setOnClickListener{
+            findNavController().navigate(R.id.action_editDiaryFragment_to_diaryFragment)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        }*/
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_diary, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditDiaryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditDiaryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }
