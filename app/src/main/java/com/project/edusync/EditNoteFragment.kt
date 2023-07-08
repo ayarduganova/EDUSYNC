@@ -8,8 +8,11 @@ import android.view.View
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.project.edusync.databinding.FragmentEditNoteBinding
 
 
@@ -21,52 +24,67 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditNoteBinding.bind(view)
-        myDB = FirebaseDatabase.getInstance().getReference()
+        val name = arguments?.getString(NAME)
+        val desc = arguments?.getString(DESC)
         val id = arguments?.getString(ID)
-        var note: Note? = null
-        var getData = GetData()
-        list = getData.getDataNotesFromDataBase(list!!, adapter!!)
-        list?.forEach{
-            if(it.id == id){
-                note = it
-            }
-        }
-
-
-        /*binding?.run {
-            var preferences = getActivity()?.getSharedPreferences("pref", MODE_PRIVATE);
-            var st = preferences?.getString("newTitle"+ note?.id.toString(), "Note #" + note?.id.toString())
-            var st1 = preferences?.getString("newDescription"+ note?.id.toString(), " ")
-            tvTitle.text = Editable.Factory.getInstance().newEditable(st)
-            etNote.text = Editable.Factory.getInstance().newEditable(st1)
+        binding?.run {
+            tvTitle.text = Editable.Factory.getInstance().newEditable(name)
+            etNote.text = Editable.Factory.getInstance().newEditable(desc)
             saveImageButton.setOnClickListener {
-                var newTitle = tvTitle.text.toString()
-                var newDescription = etNote.text.toString()
-                var preferences = getActivity()?.getSharedPreferences("pref", MODE_PRIVATE)
-                var editor = preferences?.edit()
-                editor?.putString("newTitle" + note?.id.toString(), newTitle)
-                editor?.putString("newDescription"+ note?.id.toString(), newDescription)
-                var preferences1 = NotesFragment().getActivity()?.getSharedPreferences("pref", MODE_PRIVATE)
-                var editor1 = preferences1?.edit()
-                editor1?.putString("newDescription"+ note?.id.toString(), newDescription)
-                editor1?.putString("newTitle" + note?.id.toString(), newTitle)
-                editor?.apply()
-                editor1?.apply()
+                val notesRef = FirebaseDatabase.getInstance().getReference("Note")
+                val query = notesRef.orderByChild("id").equalTo(id)
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (noteSnapshot in snapshot.children) {
+                            val noteRef = noteSnapshot.ref
+                            val updatedNote = noteSnapshot.getValue(Note::class.java)
+                            updatedNote?.name = tvTitle.text.toString()
+                            updatedNote?.description = etNote.text.toString()
+                            noteRef.setValue(updatedNote)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        // Обработка ошибки, если необходимо
+                    }
+                })
             }
             backImageButton.setOnClickListener {
                 findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
+            }
+            minusImageButton.setOnClickListener {
+                val notesRef = FirebaseDatabase.getInstance().getReference("Note")
+                val query = notesRef.orderByChild("id").equalTo(id)
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (noteSnapshot in snapshot.children) {
+                            val noteRef = noteSnapshot.ref
+                            noteRef.removeValue()
+                        }
+                    }
 
-            }*/
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+            }
 
+        }
 
 
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
     companion object {
+        private const val NAME = "NAME"
+        private const val DESC = "DESC"
         private const val ID = "ID"
-        fun createBundle(id: String): Bundle {
+        fun createBundle(name: String, desc: String, id: String): Bundle {
             val bundle = Bundle()
+            bundle.putString(NAME, name)
+            bundle.putString(DESC, desc)
             bundle.putString(ID, id)
             return bundle
         }

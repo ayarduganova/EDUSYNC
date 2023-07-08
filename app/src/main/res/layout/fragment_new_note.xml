@@ -61,10 +61,10 @@
             android:id="@+id/itNoteInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:gravity="left"
             android:layout_marginTop="8dp"
-            android:hint="Info"
-            android:inputType="text"
-            android:maxLength="30" />
+            android:hint="Info"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

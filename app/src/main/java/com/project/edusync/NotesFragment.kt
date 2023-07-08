@@ -33,10 +33,10 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
     }
     private fun initAdapter(){
         listData = mutableListOf(Note("0", "gfhj", "fghj"))
-        adapter = NoteAdapter(list = listData!!
-            //onItemClick = { note ->
-                //findNavController().navigate(R.id.action_notesFragment_to_editNoteFragment,
-                    //EditNoteFragment.createBundle(note.id))}
+        adapter = NoteAdapter(list = listData!!,
+            onItemClick = { note ->
+                findNavController().navigate(R.id.action_notesFragment_to_editNoteFragment,
+                    EditNoteFragment.createBundle(note.name, note.description, note.id))}
                 )
         binding?.rvTl?.adapter = adapter
         myDB = FirebaseDatabase.getInstance().getReference(NOTE_KEY)
@@ -44,7 +44,7 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         var vListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.getChildren()) {
-                    val note: Note = ds.getValue(Note::class.java)!!
+                    var note: Note = ds.getValue(Note::class.java)!!
                     assert(note != null)
                     listData!!.add(note)
                 }
@@ -63,5 +63,6 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
             }
         }
         binding?.rvTl?.layoutManager = GridLayoutManager(requireContext(), 2)
+
     }
 }

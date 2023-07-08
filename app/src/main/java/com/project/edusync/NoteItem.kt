@@ -3,6 +3,7 @@ package com.project.edusync
 import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.location.GnssAntennaInfo.Listener
 import android.preference.PreferenceManager
 import android.text.Editable
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -14,7 +15,7 @@ import kotlin.coroutines.coroutineContext
 
 class NoteItem(
     private val binding: ItemNoteBinding,
-    //private val onItemClick: (Note) -> Unit,
+    private val onItemClick: (Note) -> Unit,
 ) : ViewHolder(binding.root) {
 
     fun onBind(note: Note) {
@@ -22,7 +23,7 @@ class NoteItem(
             tvTitle.text = note.name
             etNote.text = note.description
             root.setOnClickListener {
-                //onItemClick(note)
+                onItemClick(note)
             }
         }
     }

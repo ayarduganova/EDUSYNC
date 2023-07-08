@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.project.edusync.databinding.FragmentEditNoteBinding
 import com.project.edusync.databinding.FragmentNewNoteBinding
+import java.util.UUID
 
 
 class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
@@ -24,10 +25,10 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         myDB = FirebaseDatabase.getInstance().getReference(NOTE_KEY)
         binding?.run {
             buttonToNote.setOnClickListener {
-                var id = myDB!!.key
+                var id =  generateUniqueID()
                 var name = itNoteName.text.toString()
                 var description = itNoteInfo.text.toString()
-                var note = Note(id = id.toString(), name = name, description = description)
+                var note = Note(id = id.toString() , name = name, description = description)
                 myDB!!.push().setValue(note)
             }
             backButton.setOnClickListener {
@@ -35,5 +36,10 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
             }
         }
     }
+    fun generateUniqueID(): String {
+        return UUID.randomUUID().toString()
+    }
+
+
 
 }
