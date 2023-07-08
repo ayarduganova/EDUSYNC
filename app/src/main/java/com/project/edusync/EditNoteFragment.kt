@@ -67,10 +67,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
                     }
                 })
             }
-
         }
-
-
     }
     override fun onDestroyView() {
         super.onDestroyView()

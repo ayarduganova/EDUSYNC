@@ -6,10 +6,10 @@ import java.lang.reflect.Constructor
 class Subject(
     val id: String,
     val day: String,
-    val name: String,
-    val auditory: String,
-    val start: String,
-    val end: String
+    var name: String,
+    var auditory: String,
+    var start: String,
+    var end: String
     )
 {
     constructor():this("", "", "", "","", "")

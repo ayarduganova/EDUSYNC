@@ -25,12 +25,12 @@ class ScheduleForDayFragment : Fragment(R.layout.fragment_schedule_for_day) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentScheduleForDayBinding.bind(view)
         var day = arguments?.getString(DAY)
+        init(day.toString())
         listData?.forEach {
             if(it.day == day){
                 day = it.day
             }
         }
-        day?.let { init(it) }
 
         binding?.run {
             plusButton.setOnClickListener {
@@ -50,7 +50,16 @@ class ScheduleForDayFragment : Fragment(R.layout.fragment_schedule_for_day) {
     private fun init(day: String) {
         listData = mutableListOf()
         db = FirebaseDatabase.getInstance().getReference(SUBJECT_KEY)
-        adapter = SubjectAdapter(listData!!)
+        adapter = SubjectAdapter(listData!!,
+            onItemClick = { subject ->  findNavController().navigate(R.id.action_scheduleForDayFragment_to_editScheduleFragment,
+            EditScheduleFragment.createBundle(subject.id, subject.day, subject.name, subject.auditory, subject.start, subject.end))
+        })
+
+        /*adapter = SubjectAdapter(listData!!,
+            onItemClick = { subject ->
+                val bundle = EditScheduleFragment.createBundle(subject.id, subject.day, subject.name, subject.auditory, subject.start, subject.end)
+                findNavController().navigate(R.id.action_scheduleForDayFragment_to_editScheduleFragment, bundle)
+            })*/
         binding?.rvSchedule?.adapter = adapter
 
         if (listData!!.size > 0) {

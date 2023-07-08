@@ -6,6 +6,7 @@ import com.project.edusync.databinding.ItemSubjectBinding
 
 class SubjectItem (
     private val binding: ItemSubjectBinding,
+    private val onItemClick: (Subject) -> Unit
     ): RecyclerView.ViewHolder(binding.root){
 
         fun onBind(subject: Subject){
@@ -15,6 +16,9 @@ class SubjectItem (
                 tvAuditory.text = subject.auditory
                 tvStartTime.text = subject.start
                 tvEndTime.text = subject.end
+                root.setOnClickListener{
+                    onItemClick(subject)
+                }
             }
         }
 }

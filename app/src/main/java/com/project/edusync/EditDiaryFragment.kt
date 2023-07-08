@@ -34,7 +34,9 @@ class EditDiaryFragment : Fragment(R.layout.fragment_edit_diary) {
                 db!!.push().setValue(subject)
             }
             buttonBack.setOnClickListener{
-                findNavController().navigate(R.id.action_editDiaryFragment_to_scheduleForDayFragment)
+                findNavController().navigate(R.id.action_editDiaryFragment_to_scheduleForDayFragment, ScheduleForDayFragment.createBundle(
+                    dayName.toString()
+                ))
             }
         }
     }

@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.project.edusync.databinding.ItemSubjectBinding
 
 class SubjectAdapter(
-    private var list:MutableList<Subject>
+    private var list:MutableList<Subject>,
+    private var onItemClick:(Subject)->Unit
 ): RecyclerView.Adapter<SubjectItem>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectItem {
         return SubjectItem(
@@ -14,8 +15,8 @@ class SubjectAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
-
+            ),
+            onItemClick = onItemClick
         )
     }
 

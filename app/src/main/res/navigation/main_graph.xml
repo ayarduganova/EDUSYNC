@@ -142,5 +142,18 @@
         <action
             android:id="@+id/action_scheduleForDayFragment_to_diaryFragment"
             app:destination="@id/diaryFragment" />
+        <action
+            android:id="@+id/action_scheduleForDayFragment_to_editScheduleFragment"
+            app:destination="@id/editScheduleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editScheduleFragment"
+        android:name="com.project.edusync.EditScheduleFragment"
+        android:label="EditScheduleFragment"
+        tools:layout="@layout/fragment_edit_schedule">
+        <action
+            android:id="@+id/action_editScheduleFragment_to_scheduleForDayFragment"
+            app:destination="@id/scheduleForDayFragment" />
+
     </fragment>
 </navigation>
