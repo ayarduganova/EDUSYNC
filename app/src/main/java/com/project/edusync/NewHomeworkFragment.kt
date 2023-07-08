@@ -5,55 +5,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.project.edusync.databinding.FragmentNewHomeworkBinding
+import com.project.edusync.databinding.FragmentNewNoteBinding
+import java.util.UUID
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NewHomeworkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class NewHomeworkFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+class NewHomeworkFragment : Fragment(R.layout.fragment_new_homework) {
+    private var myDB: DatabaseReference? = null
+    private val NOTE_KEY = "Homework"
+    private var binding: FragmentNewHomeworkBinding? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentNewHomeworkBinding.bind(view)
+        myDB = FirebaseDatabase.getInstance().getReference(NOTE_KEY)
+        binding?.run {
+            buttonToHomework.setOnClickListener {
+                var id =  generateUniqueID()
+                var name = itNameHomework.text.toString()
+                var dedlDay = itDedlineDay.text.toString()
+                var dedlTime = itDedlineTime.text.toString()
+                var task = itSInfo.text.toString()
+                var homework = Homework(id, name, dedlDay, dedlTime, task)
+                myDB!!.push().setValue(homework)
+            }
+            buttonBack.setOnClickListener {
+                findNavController().navigate(R.id.action_newHomeworkFragment_to_homeworksFragment)
+            }
         }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_homework, container, false)
+    fun generateUniqueID(): String {
+        return UUID.randomUUID().toString()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NewHomeworkFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewHomeworkFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
