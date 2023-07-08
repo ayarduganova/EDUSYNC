@@ -31,6 +31,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 delete("Homework")
                 delete("subject")
             }
+            buttonClearDiary.setOnClickListener{
+                delete("subject")
+            }
+
         }
     }
 
