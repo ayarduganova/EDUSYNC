@@ -8,27 +8,46 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.project.edusync.databinding.FragmentEditDiaryBinding
+import java.util.UUID
 
 class EditDiaryFragment : Fragment(R.layout.fragment_edit_diary) {
-    private var name: TextInputEditText? = null
-    private var auditory: TextInputEditText? = null
-    private var start: TextInputEditText? = null
-    private var end: TextInputEditText? = null
+    private var db: DatabaseReference? = null
+    private val SUBJECT_KEY = "subject"
     private var binding: FragmentEditDiaryBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditDiaryBinding.bind(view)
-        name = binding?.itItemName
-        auditory = binding?.itAuditory
-        start = binding?.itStartTime
-        end = binding?.itEndTime
+        db = FirebaseDatabase.getInstance().getReference(SUBJECT_KEY)
+        var dayName = arguments?.getString(DAY)
+        binding?.run {
+            buttonSave.setOnClickListener{
+                var id = UUID.randomUUID().toString()
+                var day = dayName.toString()
+                var name = itItemName.text.toString()
+                var auditory = itAuditory.text.toString()
+                var start = itStartTime.text.toString()
+                var end = itEndTime.text.toString()
+                var subject = Subject(id, day, name, auditory, start, end)
+                db!!.push().setValue(subject)
+            }
+            buttonBack.setOnClickListener{
+                findNavController().navigate(R.id.action_editDiaryFragment_to_scheduleForDayFragment)
+            }
+        }
     }
-
-
-
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+    companion object{
+        private const val DAY = "day"
+        fun createBundle(day: String):Bundle{
+            val bundle = Bundle()
+            bundle.putString(DAY, day)
+            return bundle
+        }
     }
 }

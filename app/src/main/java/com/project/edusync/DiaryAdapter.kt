@@ -19,11 +19,9 @@ class DiaryAdapter(private val list: List<Diary>,
             onItemClick = onItemClick
         )
     }
-
     override fun getItemCount(): Int {
         return list.size
     }
-
     override fun onBindViewHolder(holder: DiaryItem, position: Int) {
         val curDay = list[position]
         holder.onBind(list[position])
