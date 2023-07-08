@@ -16,9 +16,7 @@ import com.project.edusync.databinding.FragmentNotesBinding
 class NotesFragment : Fragment(R.layout.fragment_notes) {
     private var binding: FragmentNotesBinding? = null
     private var adapter: NoteAdapter? = null
-    private var listView: RecyclerView? = null
     private var listData: MutableList<Note>? = null
-
     private var myDB: DatabaseReference? = null
     private val NOTE_KEY = "Note"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

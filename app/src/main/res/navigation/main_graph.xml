@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_homeworksFragment_to_newHomeworkFragment"
             app:destination="@id/newHomeworkFragment" />
+        <action
+            android:id="@+id/action_homeworksFragment_to_editHwFragment"
+            app:destination="@id/editHwFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -155,5 +158,14 @@
             android:id="@+id/action_editScheduleFragment_to_scheduleForDayFragment"
             app:destination="@id/scheduleForDayFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/editHwFragment"
+        android:name="com.project.edusync.EditHwFragment"
+        android:label="fragment_edit_hw"
+        tools:layout="@layout/fragment_edit_hw" >
+        <action
+            android:id="@+id/action_editHwFragment_to_homeworksFragment"
+            app:destination="@id/homeworksFragment" />
     </fragment>
 </navigation>

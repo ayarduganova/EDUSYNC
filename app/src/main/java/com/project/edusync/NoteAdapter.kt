@@ -1,10 +1,8 @@
 package com.project.edusync
 
-import android.location.GnssAntennaInfo
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.RequestManager
 import com.project.edusync.databinding.ItemNoteBinding
 
 class NoteAdapter(
