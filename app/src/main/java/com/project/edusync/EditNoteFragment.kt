@@ -24,26 +24,48 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditNoteBinding.bind(view)
+        val name = arguments?.getString(NAME)
+        val desc = arguments?.getString(DESC)
         val id = arguments?.getString(ID)
-        var note : Note? = null
-        val starCountRef = FirebaseDatabase.getInstance().getReference("Note")
-        starCountRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot.children) {
-                    if(ds.getValue(Note::class.java)?.id == id) note = ds.getValue(Note::class.java)
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
         binding?.run {
-            tvTitle.text = Editable.Factory.getInstance().newEditable(note?.name)
-                //Editable.Factory.getInstance().newEditable(note?.name)
-            etNote.text = Editable.Factory.getInstance().newEditable(note?.description)
-                //Editable.Factory.getInstance().newEditable(note?.description)
+            tvTitle.text = Editable.Factory.getInstance().newEditable(name)
+            etNote.text = Editable.Factory.getInstance().newEditable(desc)
+            saveImageButton.setOnClickListener {
+                val notesRef = FirebaseDatabase.getInstance().getReference("Note")
+                val query = notesRef.orderByChild("id").equalTo(id)
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (noteSnapshot in snapshot.children) {
+                            val noteRef = noteSnapshot.ref
+                            val updatedNote = noteSnapshot.getValue(Note::class.java)
+                            updatedNote?.name = tvTitle.text.toString()
+                            updatedNote?.description = etNote.text.toString()
+                            noteRef.setValue(updatedNote)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        // Обработка ошибки, если необходимо
+                    }
+                })
+            }
             backImageButton.setOnClickListener {
                 findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
+            }
+            minusImageButton.setOnClickListener {
+                val notesRef = FirebaseDatabase.getInstance().getReference("Note")
+                val query = notesRef.orderByChild("id").equalTo(id)
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (noteSnapshot in snapshot.children) {
+                            val noteRef = noteSnapshot.ref
+                            noteRef.removeValue()
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
             }
 
         }
@@ -56,9 +78,13 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     }
 
     companion object {
+        private const val NAME = "NAME"
+        private const val DESC = "DESC"
         private const val ID = "ID"
-        fun createBundle(id: String): Bundle {
+        fun createBundle(name: String, desc: String, id: String): Bundle {
             val bundle = Bundle()
+            bundle.putString(NAME, name)
+            bundle.putString(DESC, desc)
             bundle.putString(ID, id)
             return bundle
         }

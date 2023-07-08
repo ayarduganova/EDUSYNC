@@ -36,7 +36,7 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         adapter = NoteAdapter(list = listData!!,
             onItemClick = { note ->
                 findNavController().navigate(R.id.action_notesFragment_to_editNoteFragment,
-                    EditNoteFragment.createBundle(note.id))}
+                    EditNoteFragment.createBundle(note.name, note.description, note.id))}
                 )
         binding?.rvTl?.adapter = adapter
         myDB = FirebaseDatabase.getInstance().getReference(NOTE_KEY)
@@ -60,8 +60,6 @@ class NotesFragment : Fragment(R.layout.fragment_notes) {
         binding?.run {
             plusImageButton.setOnClickListener {
                 findNavController().navigate(R.id.action_notesFragment_to_newNoteFragment)
-            }
-            minusImageButton.setOnClickListener {
             }
         }
         binding?.rvTl?.layoutManager = GridLayoutManager(requireContext(), 2)
