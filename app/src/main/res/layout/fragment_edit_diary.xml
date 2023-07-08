@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Name Item"
+            android:hint="name"
             android:inputType="text"
             android:maxLength="30" />
 
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Auditory Item"
+            android:hint="auditory"
             android:inputType="text"
             android:maxLength="30" />
 
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Start Time Item"
+            android:hint="start time"
             android:inputType="text"
             android:maxLength="30" />
 
@@ -98,23 +98,25 @@
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_marginTop="8dp"
-            android:hint="End Time Item"
+            android:hint="end time"
             android:inputType="text"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonToDiaryFragment"
+        android:id="@+id/buttonSave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
         android:layout_marginEnd="120dp"
         android:backgroundTint="@color/primary"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEndTime" />
+        app:layout_constraintTop_toBottomOf="@+id/tilEndTime"
+        app:layout_constraintVertical_bias="0.711" />
 
     <ImageView
         android:id="@+id/imageView13"
@@ -124,12 +126,13 @@
         app:tint="@color/accent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-56dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/willamette"
         android:text="@string/edit_diary"
         android:textSize="30sp"
@@ -159,5 +162,20 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="120dp"
+        android:backgroundTint="@color/primary"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilEndTime"
+        app:layout_constraintVertical_bias="0.707" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
