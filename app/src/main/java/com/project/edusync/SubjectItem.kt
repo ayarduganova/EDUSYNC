@@ -15,9 +15,6 @@ class SubjectItem (
                 tvAuditory.text = subject.auditory
                 tvStartTime.text = subject.start
                 tvEndTime.text = subject.end
-                //root.setOnClickListener{
-
-                //}
             }
         }
 }

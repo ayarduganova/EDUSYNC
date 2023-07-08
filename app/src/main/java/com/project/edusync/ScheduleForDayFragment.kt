@@ -32,13 +32,15 @@ class ScheduleForDayFragment : Fragment(R.layout.fragment_schedule_for_day) {
         }
         day?.let { init(it) }
 
-        binding?.plusButton?.setOnClickListener {
-            findNavController().navigate(R.id.action_scheduleForDayFragment_to_editDiaryFragment, EditDiaryFragment.createBundle(
-                day.toString()
-            ))
-        }
-        binding?.backButton?.setOnClickListener{
-            findNavController().navigate(R.id.action_scheduleForDayFragment_to_diaryFragment)
+        binding?.run {
+            plusButton.setOnClickListener {
+                findNavController().navigate(
+                    R.id.action_scheduleForDayFragment_to_editDiaryFragment,
+                    EditDiaryFragment.createBundle(day.toString()))
+            }
+            backButton.setOnClickListener{
+                findNavController().navigate(R.id.action_scheduleForDayFragment_to_diaryFragment)
+            }
         }
     }
     override fun onDestroy() {
@@ -63,11 +65,9 @@ class ScheduleForDayFragment : Fragment(R.layout.fragment_schedule_for_day) {
                         listData!!.add(sub)
                     }
                 }
-
                 adapter!!.notifyDataSetChanged()
             }
-            override fun onCancelled(error: DatabaseError) {
-            }
+            override fun onCancelled(error: DatabaseError) {}
         }
         db!!.addValueEventListener(vListener)
         binding?.rvSchedule?.layoutManager = LinearLayoutManager(requireContext())
