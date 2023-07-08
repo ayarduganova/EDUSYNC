@@ -18,9 +18,6 @@ import com.project.edusync.databinding.FragmentEditNoteBinding
 
 class EditHwFragment : Fragment(R.layout.fragment_edit_hw) {
     private var binding: FragmentEditHwBinding? = null
-    private var myDB: DatabaseReference? = null
-    private var list: MutableList<Homework>? = null
-    private var adapter: HomeworkAdapter?  = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditHwBinding.bind(view)
