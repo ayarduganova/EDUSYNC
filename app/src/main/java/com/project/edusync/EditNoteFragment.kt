@@ -8,8 +8,11 @@ import android.view.View
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.project.edusync.databinding.FragmentEditNoteBinding
 
 
@@ -21,47 +24,36 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditNoteBinding.bind(view)
-        myDB = FirebaseDatabase.getInstance().getReference()
         val id = arguments?.getString(ID)
-        var note: Note? = null
-        var getData = GetData()
-        list = getData.getDataNotesFromDataBase(list!!, adapter!!)
-        list?.forEach{
-            if(it.id == id){
-                note = it
+        var note : Note? = null
+        val starCountRef = FirebaseDatabase.getInstance().getReference("Note")
+        starCountRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    if(ds.getValue(Note::class.java)?.id == id) note = ds.getValue(Note::class.java)
+                }
             }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+        binding?.run {
+            tvTitle.text = Editable.Factory.getInstance().newEditable(note?.name)
+                //Editable.Factory.getInstance().newEditable(note?.name)
+            etNote.text = Editable.Factory.getInstance().newEditable(note?.description)
+                //Editable.Factory.getInstance().newEditable(note?.description)
+            backImageButton.setOnClickListener {
+                findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
+            }
+
         }
 
 
-        /*binding?.run {
-            var preferences = getActivity()?.getSharedPreferences("pref", MODE_PRIVATE);
-            var st = preferences?.getString("newTitle"+ note?.id.toString(), "Note #" + note?.id.toString())
-            var st1 = preferences?.getString("newDescription"+ note?.id.toString(), " ")
-            tvTitle.text = Editable.Factory.getInstance().newEditable(st)
-            etNote.text = Editable.Factory.getInstance().newEditable(st1)
-            saveImageButton.setOnClickListener {
-                var newTitle = tvTitle.text.toString()
-                var newDescription = etNote.text.toString()
-                var preferences = getActivity()?.getSharedPreferences("pref", MODE_PRIVATE)
-                var editor = preferences?.edit()
-                editor?.putString("newTitle" + note?.id.toString(), newTitle)
-                editor?.putString("newDescription"+ note?.id.toString(), newDescription)
-                var preferences1 = NotesFragment().getActivity()?.getSharedPreferences("pref", MODE_PRIVATE)
-                var editor1 = preferences1?.edit()
-                editor1?.putString("newDescription"+ note?.id.toString(), newDescription)
-                editor1?.putString("newTitle" + note?.id.toString(), newTitle)
-                editor?.apply()
-                editor1?.apply()
-            }
-            backImageButton.setOnClickListener {
-                findNavController().navigate(R.id.action_editNoteFragment_to_notesFragment)
-
-            }*/
-
-
-
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
     companion object {
         private const val ID = "ID"
