@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Dedline Day"
+            android:hint="@string/dedline_day"
             android:inputType="text"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Dedline Time"
+            android:hint="@string/dedline_time"
             android:inputType="text"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Task"
+            android:hint="@string/task"
             android:inputType="text"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -116,7 +116,7 @@
         android:layout_marginStart="-56dp"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/willamette"
-        android:text="Edit hw"
+        android:text="@string/edit_hw"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/imageView13"
         app:layout_constraintTop_toTopOf="parent" />
@@ -126,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primary"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -140,7 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/primary"
-        android:text="Back"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

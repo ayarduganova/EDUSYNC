@@ -26,4 +26,10 @@
     <string name="back">Back</string>
     <string name="enter_text">Enter text...</string>
     <string name="schedule">Schedule</string>
+    <string name="note_name">Note name</string>
+    <string name="info">Info</string>
+    <string name="dedline_day">Dedline Day</string>
+    <string name="dedline_time">Dedline Time</string>
+    <string name="task">Task</string>
+    <string name="edit_hw">Edit hw</string>
 </resources>

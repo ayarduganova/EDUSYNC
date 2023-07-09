@@ -26,4 +26,10 @@
     <string name="back">Назад</string>
     <string name="enter_text">Введите тект...</string>
     <string name="schedule">Расписание</string>
+    <string name="note_name">Название заметки</string>
+    <string name="info">Информация</string>
+    <string name="dedline_day">День дедлайна</string>
+    <string name="dedline_time">Время дедлайна</string>
+    <string name="task">Задание</string>
+    <string name="edit_hw">Изменить дз</string>
 </resources>

@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Note name"
+            android:hint="@string/note_name"
             android:inputType="text"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +64,7 @@
             android:inputType="textMultiLine"
             android:gravity="left"
             android:layout_marginTop="8dp"
-            android:hint="Info"/>
+            android:hint="@string/info"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -74,7 +74,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginEnd="120dp"
         android:backgroundTint="@color/primary"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -89,7 +89,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginEnd="120dp"
         android:backgroundTint="@color/primary"
-        android:text="Back"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
