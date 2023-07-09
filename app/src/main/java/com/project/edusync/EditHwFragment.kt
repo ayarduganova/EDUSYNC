@@ -52,7 +52,7 @@ class EditHwFragment : Fragment(R.layout.fragment_edit_hw) {
                     }
                 })
             }
-            buttonBack.setOnClickListener {
+            backButton.setOnClickListener {
                 findNavController().navigate(R.id.action_editHwFragment_to_homeworksFragment)
             }
             minusImageButton.setOnClickListener {
