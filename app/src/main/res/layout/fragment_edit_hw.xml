@@ -97,8 +97,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/task"
-            android:inputType="text"
-            android:maxLength="30" />
+            android:inputType="textMultiLine"
+            android:gravity="left" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
