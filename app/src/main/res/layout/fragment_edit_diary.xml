@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="name"
+            android:hint="@string/name"
             android:inputType="text"
             android:maxLength="30" />
 
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="auditory"
+            android:hint="@string/auditory"
             android:inputType="text"
             android:maxLength="30" />
 
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="start time"
+            android:hint="@string/start_time"
             android:inputType="text"
             android:maxLength="30" />
 
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_marginTop="8dp"
-            android:hint="end time"
+            android:hint="@string/end_time"
             android:inputType="text"
             android:maxLength="30" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -129,7 +129,7 @@
         app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73"
+        app:layout_constraintVertical_bias="0.85"
         app:tint="@color/bg_color" />
 
     <ImageView

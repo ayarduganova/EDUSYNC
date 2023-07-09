@@ -32,4 +32,5 @@
     <string name="dedline_time">Время дедлайна</string>
     <string name="task">Задание</string>
     <string name="edit_hw">Изменить дз</string>
+    <string name="edit_schedule">Изменить расписание</string>
 </resources>
