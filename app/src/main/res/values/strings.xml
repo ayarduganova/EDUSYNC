@@ -32,4 +32,5 @@
     <string name="dedline_time">Dedline Time</string>
     <string name="task">Task</string>
     <string name="edit_hw">Edit hw</string>
+    <string name="edit_schedule">Edit Schedule</string>
 </resources>
